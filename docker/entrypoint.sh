@@ -23,6 +23,14 @@ if [ -n "$MYSQLHOST" ]; then
     echo "Importing schema..."
     mysql --skip-ssl -h"$MYSQLHOST" -P"${MYSQLPORT:-3306}" -u"$MYSQLUSER" -p"$MYSQLPASSWORD" "$MYSQLDATABASE" < /docker/schema.sql && echo "Schema imported."
   fi
+  # Widen off_pwd so it can store a password hash (bcrypt is 60 chars).
+  mysql --skip-ssl -h"$MYSQLHOST" -P"${MYSQLPORT:-3306}" -u"$MYSQLUSER" -p"$MYSQLPASSWORD" "$MYSQLDATABASE" \
+    -e "ALTER TABLE tbl_courier_officers MODIFY off_pwd varchar(255) NOT NULL" 2>/dev/null \
+    && echo "off_pwd column verified."
+  # Replace the legacy default admin/admin password with an unusable hash.
+  php -r '$h=password_hash(bin2hex(random_bytes(32)), PASSWORD_DEFAULT); echo "UPDATE tbl_courier_officers SET off_pwd=\x27$h\x27 WHERE officer_name=\x27admin\x27 AND off_pwd=\x27admin\x27;\n";' \
+    | mysql --skip-ssl -h"$MYSQLHOST" -P"${MYSQLPORT:-3306}" -u"$MYSQLUSER" -p"$MYSQLPASSWORD" "$MYSQLDATABASE" 2>/dev/null \
+    && echo "legacy default admin account disabled."
 fi
 
 exec docker-php-entrypoint "$@"

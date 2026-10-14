@@ -3,13 +3,13 @@
 require_once('database.php');
 require_once('library.php');
 
-$cons= $_POST['Consignment'];
+$cons = isset($_POST['Consignment']) ? trim($_POST['Consignment']) : '';
 
-$sql = "SELECT *
-FROM tbl_courier
-WHERE cons_no = '$cons'";
-$result = dbQuery($sql);
-$no = dbNumRows($result);
+$stmt = mysqli_prepare($dbConn, "SELECT * FROM tbl_courier WHERE cons_no = ?");
+mysqli_stmt_bind_param($stmt, 's', $cons);
+mysqli_stmt_execute($stmt);
+$result = mysqli_stmt_get_result($stmt);
+$no = $result ? mysqli_num_rows($result) : 0;
 if($no == 1){
   while($data = dbFetchAssoc($result)) {
     extract($data);
@@ -152,19 +152,17 @@ tr:nth-child(even) {
 
 
 
-					$sqlTrack = "SELECT *
-							FROM tbl_courier_track
-							WHERE cons_no = '$cons'
-							ORDER BY id DESC
-							LIMIT 0, 20";	
+					$stmtTrack = mysqli_prepare($dbConn, "SELECT * FROM tbl_courier_track WHERE cons_no = ? ORDER BY id DESC LIMIT 0, 20");
+					mysqli_stmt_bind_param($stmtTrack, 's', $cons);
+					mysqli_stmt_execute($stmtTrack);
 
 
 					//$sql = "SELECT tbl_courier.*, tbl_courier_track.*
 					//		FROM tbl_courier JOIN tbl_courier_track ON (tbl_courier.cons_no = tbl_courier_track.cons_no)
 					//		WHERE tbl_courier.cons_no = '$cons'";		
 
-              $resultTrack = dbQuery($sqlTrack);
-              $noTrack = dbNumRows($resultTrack);
+              $resultTrack = mysqli_stmt_get_result($stmtTrack);
+              $noTrack = $resultTrack ? mysqli_num_rows($resultTrack) : 0;
               ?>   
        
 						   <h1>Tracking Shipment &nbsp;

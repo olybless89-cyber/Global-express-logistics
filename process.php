@@ -1,10 +1,13 @@
 <?php 
 //start session
 session_start();
-require_once('mail.php');
 require_once('database.php');
+require_once('library.php');
+require_once('mail.php');
 
-$action = $_GET['action'];
+isUser();
+
+$action = $_GET['action'] ?? '';
 
 switch($action) {
 	case 'add-cons':
@@ -387,7 +390,7 @@ function addNewOffice() {
 function addManager() {
 	
 	$ManagerName = $_POST['ManagerName'];
-	$Password = $_POST['Password'];
+	$Password = hashPassword($_POST['Password']);
 	$Address = $_POST['Address'];
 	$Email = $_POST['Email'];
 	$PhoneNo = $_POST['PhoneNo'];
@@ -655,7 +658,7 @@ function updateStatus() {
 function changePass() {
 	$cid = $_POST['cid'];
 	$ManagerName = $_POST['ManagerName'];
-	$Password = $_POST['Password'];
+	$Password = hashPassword($_POST['Password']);
 	
 	$sql = "UPDATE tbl_courier_officers SET
 	officer_name = '$ManagerName',

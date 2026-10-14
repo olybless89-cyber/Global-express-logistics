@@ -353,7 +353,7 @@ return true;
           <tr>
             <td><div align="right">Old Password   :</div></td>
            
-            <td><input  maxlength="20" value="<?php echo $off_pwd; ?>"   size="40" type="text"></div></td>
+            <td><input  maxlength="20" value="" placeholder="(unchanged)"   size="40" type="password" readonly></div></td>
           </tr>
          <tr>
             <td><div align="right">New Password   :</div></td>
