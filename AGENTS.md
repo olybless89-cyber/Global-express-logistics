@@ -24,6 +24,9 @@ Apache (`php:8.2-apache`), containerised and deployed on Railway from `main`.
 - Passwords are stored in `tbl_courier_officers.off_pwd` as bcrypt hashes
   (`varchar(255)`; bcrypt is 60 chars, so the column must not be narrower).
   Legacy plaintext rows still verify and are upgraded to a hash on first login.
+- The seeded `admin` officer row is given an unusable random hash. The
+  entrypoint also rewrites any legacy `admin`/`admin` row, so that default
+  credential never works on a fresh or existing database.
 - Admin login is read from the environment, never from source:
   - `ADMIN_USERNAME`
   - `ADMIN_PASSWORD_HASH` (bcrypt hash; generate with

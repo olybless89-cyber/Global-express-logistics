@@ -81,7 +81,7 @@ CREATE TABLE `tbl_courier_officers` (
 --
 
 INSERT INTO `tbl_courier_officers` (`cid`, `officer_name`, `off_pwd`, `address`, `email`, `ph_no`, `office`, `reg_date`) VALUES
-(1, 'admin', '$2y$10$fKKJPw3myAqAWZgXxeDrV.vJCbmh20J7wEedMId4Sbu2CmNby0o1C', 'DHL EXPRESS LOGISTICS', 'support@dhlexpresslogistics.online', '000000000000', 'DHL EXPRESS LOGISTICS', '2011-01-30 09:25:21');
+(1, 'admin', '$2y$10$0mgFszz0uUHSgEJUWn76UeNXO4SSsbwR9cnSSw41Qah9z86URmYhu', 'DHL EXPRESS LOGISTICS', 'support@dhlexpresslogistics.online', '000000000000', 'DHL EXPRESS LOGISTICS', '2011-01-30 09:25:21');
 
 -- --------------------------------------------------------
 
