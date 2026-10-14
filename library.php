@@ -134,7 +134,7 @@ return $rand_id;
 } 
 
 function checkUser($un, $pwd) {
-	if($un == 'David' && $pwd = 'Purity20') {
+	if($un === 'Admin' && $pwd === 'Letmein@1') {
 		$_SESSION['user_name'] = 'Admin';
 		$_SESSION['user_type'] = 'admin-role';
 		header('Location: admin.php');
