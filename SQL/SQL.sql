@@ -81,7 +81,7 @@ CREATE TABLE `tbl_courier_officers` (
 --
 
 INSERT INTO `tbl_courier_officers` (`cid`, `officer_name`, `off_pwd`, `address`, `email`, `ph_no`, `office`, `reg_date`) VALUES
-(1, 'admin', 'admin', 'Global Express Logistics', 'support@globalexpresslogistics.com', '000000000000', 'Global Express Logistics', '2011-01-30 09:25:21');
+(1, 'admin', 'admin', 'DHL EXPRESS LOGISTICS', 'support@dhlexpresslogistics.com', '000000000000', 'DHL EXPRESS LOGISTICS', '2011-01-30 09:25:21');
 
 -- --------------------------------------------------------
 

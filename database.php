@@ -4,12 +4,12 @@ $dbHost = getenv('MYSQLHOST') ?: 'localhost';
 $dbPort = (int)(getenv('MYSQLPORT') ?: 3306);
 $dbUser = getenv('MYSQLUSER') ?: 'root';
 $dbPass = getenv('MYSQLPASSWORD') ?: '';
-$dbName = getenv('MYSQLDATABASE') ?: 'globalexpresslogistics';
+$dbName = getenv('MYSQLDATABASE') ?: 'dhlexpresslogistics';
 
 // Site settings
-$site_title = 'Global Express Logistics';
-$site_url   = getenv('SITE_URL') ?: 'https://globalexpresslogistics.com';
-$site_email = getenv('SITE_EMAIL') ?: 'support@globalexpresslogistics.com';
+$site_title = 'DHL EXPRESS LOGISTICS';
+$site_url   = getenv('SITE_URL') ?: 'https://dhlexpresslogistics.com';
+$site_email = getenv('SITE_EMAIL') ?: 'support@dhlexpresslogistics.com';
 
 mysqli_report(MYSQLI_REPORT_OFF);
 $dbConn = mysqli_connect($dbHost, $dbUser, $dbPass, $dbName, $dbPort) or die('MySQL connect failed. ' . mysqli_connect_error());
