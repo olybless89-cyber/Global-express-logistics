@@ -133,34 +133,96 @@ function get_rand_id($length)
 return $rand_id;
 } 
 
+// Verify a password against a stored value. Accepts a bcrypt/argon hash,
+// and also legacy plaintext rows so existing accounts keep working after
+// they are migrated to hashes.
+function verifyPassword($plain, $stored)
+{
+        if ($stored === '') {
+                return false;
+        }
+        if (!empty(password_get_info($stored)['algo'])) {
+                return password_verify($plain, $stored);
+        }
+        return hash_equals($stored, $plain);
+}
+
+// Hash a password for storage. A value that is already a hash is returned
+// unchanged so re-saving an account does not double-hash it.
+function hashPassword($plain)
+{
+        if (!empty(password_get_info($plain)['algo'])) {
+                return $plain;
+        }
+        return password_hash($plain, PASSWORD_DEFAULT);
+}
+
+// Admin credentials come from the environment so they are not stored in the
+// repository. If unset, no hardcoded admin account exists.
+function adminCredentials()
+{
+        $user = getenv('ADMIN_USERNAME');
+        $hash = getenv('ADMIN_PASSWORD_HASH');
+        if (($user === false || $user === '') && ($hash === false || $hash === '')) {
+                return null;
+        }
+        return array('username' => $user, 'hash' => $hash);
+}
+
 function checkUser($un, $pwd) {
-	if($un === 'Admin' && $pwd === 'Letmein@1') {
-		$_SESSION['user_name'] = 'Admin';
-		$_SESSION['user_type'] = 'admin-role';
-		header('Location: admin.php');
-		//echo 'Iam here.......';
-	}else {
-		$sql = "SELECT officer_name
-				FROM tbl_courier_officers
-				WHERE officer_name = '$un'
-				AND off_pwd = '$pwd'";
-		$result = dbQuery($sql);
-		$no = dbNumRows($result);
-		if($no >= 1) {
-			$_SESSION['user_name']= $un;
-			$_SESSION['user_type']= 'officer';
-			header('Location: admin.php');
-		}//else
-		else {
-			return "...invalid details. Please try Again.";
-		}		
-	}//else
+        $admin = adminCredentials();
+        if ($admin !== null && $un === $admin['username']) {
+                if (!empty($admin['hash']) && verifyPassword($pwd, $admin['hash'])) {
+                        $_SESSION['user_name'] = 'Admin';
+                        $_SESSION['user_type'] = 'admin-role';
+                        header('Location: admin.php');
+                        return;
+                }
+        }
+
+        // Look up the account, then compare the password in PHP. The query is
+        // parameterised so user input can never change its structure.
+        global $dbConn;
+        $stmt = mysqli_prepare($dbConn, "SELECT cid, officer_name, off_pwd FROM tbl_courier_officers WHERE officer_name = ?");
+        if (!$stmt) {
+                return "...invalid details. Please try Again.";
+        }
+        mysqli_stmt_bind_param($stmt, 's', $un);
+        mysqli_stmt_execute($stmt);
+        $result = mysqli_stmt_get_result($stmt);
+        $row = $result ? mysqli_fetch_assoc($result) : null;
+        mysqli_stmt_close($stmt);
+
+        if ($row && verifyPassword($pwd, $row['off_pwd'])) {
+                // Upgrade legacy plaintext passwords to a hash on first login.
+                if (empty(password_get_info($row['off_pwd'])['algo'])) {
+                        upgradePasswordHash((int)$row['cid'], $pwd);
+                }
+                $_SESSION['user_name'] = $row['officer_name'];
+                $_SESSION['user_type'] = 'officer';
+                header('Location: admin.php');
+        } else {
+                return "...invalid details. Please try Again.";
+        }
 }//checkUser
 
+function upgradePasswordHash($cid, $plain)
+{
+        global $dbConn;
+        $stmt = mysqli_prepare($dbConn, "UPDATE tbl_courier_officers SET off_pwd = ? WHERE cid = ?");
+        if ($stmt) {
+                $hash = hashPassword($plain);
+                mysqli_stmt_bind_param($stmt, 'si', $hash, $cid);
+                mysqli_stmt_execute($stmt);
+                mysqli_stmt_close($stmt);
+        }
+}
+
 function isUser(){
-	if(!isset($_SESSION['user_name'])){
-		header('Location: login.php');
-	}
-	
+        if(!isset($_SESSION['user_name'])){
+                header('Location: login.php');
+                exit;
+        }
+
 }
 ?>

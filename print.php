@@ -1,7 +1,9 @@
 <?php
 
+session_start();
 require_once('database.php');
 require_once('library.php');
+isUser();
 
 $cid= (int)$_GET['cid'];
 
@@ -29,7 +31,7 @@ extract($data);
     <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
 	
 	<!-- Page Description and Author -->
-	<meta name="description" content="Global Express Logistics"/>
+	<meta name="description" content="DHL EXPRESS LOGISTICS"/>
 	<meta name="keywords" content="Courier Delivery & Logistic Company" />
 	<meta name="author" content="Viz">	
 	
@@ -118,10 +120,10 @@ extract($data);
           <div class="col-xs-12">
             <h2 class="page-header">
 			   <center> 
-			       <strong style="color:green;">Global Express Logistics<br>
+			       <strong style="color:green;">DHL EXPRESS LOGISTICS<br>
 Address: China, Asia and Europe<br>
-Email: support@globalexpresslogistics.com<br>
-Company Website: www.globalexpresslogistics.com</strong></center>
+Email: support@dhlexpresslogistics.online<br>
+Company Website: www.dhlexpresslogistics.online</strong></center>
             </h2>
           </div><!-- /.col -->
         </div>

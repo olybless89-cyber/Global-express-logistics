@@ -8,7 +8,7 @@ function send_email($data) {
 	$sub = $data['sub'];
 	$msg = $data['msg'];
 	$message = get_email_msg($data);
-    $header = "From: Global Express Logistics <support@globalexpresslogistics.com>  \r\n";
+    $header = "From: DHL EXPRESS LOGISTICS <support@dhlexpresslogistics.online>  \r\n";
 	$header .= "MIME-Version: 1.0\r\n";
 	$header .= "Content-type: text/html\r\n";
 	$retval = mail ($to,$sub,$message,$header);
