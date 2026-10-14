@@ -120,8 +120,8 @@ extract($data);
 			   <center> 
 			       <strong style="color:green;">DHL EXPRESS LOGISTICS<br>
 Address: China, Asia and Europe<br>
-Email: support@dhlexpresslogistics.com<br>
-Company Website: www.dhlexpresslogistics.com</strong></center>
+Email: support@dhlexpresslogistics.online<br>
+Company Website: www.dhlexpresslogistics.online</strong></center>
             </h2>
           </div><!-- /.col -->
         </div>

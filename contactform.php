@@ -5,7 +5,7 @@ if(isset($_POST["submit"])) {
 	$phone = $_POST["phone"];
 	$message = $_POST["message"];
 
-	$mailTo = "support@dhlexpresslogistics.com";
+	$mailTo = "support@dhlexpresslogistics.online";
 	$headers = "From: ".$mailFrom;
 	$txt = "DHL EXPRESS LOGISTICS Contact: You have received an e-mail from ".$name.".\n\n".$mail.".\n\n".$phone.".\n\n".$message;
 	

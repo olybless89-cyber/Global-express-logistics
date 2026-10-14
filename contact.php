@@ -41,7 +41,7 @@
 						
 							<!-- Right List -->
 							<ul class="right-list">
-								<li><span class="icon flaticon-mail"></span>support@dhlexpresslogistics.com</li>
+								<li><span class="icon flaticon-mail"></span>support@dhlexpresslogistics.online</li>
 								<li><span class="icon flaticon-phone-contact"></span></li>
 							</ul>
 							
@@ -336,7 +336,7 @@ function googleTranslateElementInit() {
 									<h2><span class="icon fa fa-user"></span>Contact Us</h2>
 									<div class="phone-number"></div>
 									<div class="about-email"><br>
-									support@dhlexpresslogistics.com</div>
+									support@dhlexpresslogistics.online</div>
 									
 								</div>
 							</div>

@@ -8,8 +8,8 @@ $dbName = getenv('MYSQLDATABASE') ?: 'dhlexpresslogistics';
 
 // Site settings
 $site_title = 'DHL EXPRESS LOGISTICS';
-$site_url   = getenv('SITE_URL') ?: 'https://dhlexpresslogistics.com';
-$site_email = getenv('SITE_EMAIL') ?: 'support@dhlexpresslogistics.com';
+$site_url   = getenv('SITE_URL') ?: 'https://dhlexpresslogistics.online';
+$site_email = getenv('SITE_EMAIL') ?: 'support@dhlexpresslogistics.online';
 
 mysqli_report(MYSQLI_REPORT_OFF);
 $dbConn = mysqli_connect($dbHost, $dbUser, $dbPass, $dbName, $dbPort) or die('MySQL connect failed. ' . mysqli_connect_error());
