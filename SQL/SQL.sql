@@ -68,7 +68,7 @@ CREATE TABLE `tbl_courier` (
 CREATE TABLE `tbl_courier_officers` (
   `cid` int(10) NOT NULL,
   `officer_name` varchar(40) NOT NULL,
-  `off_pwd` varchar(40) NOT NULL,
+  `off_pwd` varchar(255) NOT NULL,
   `address` varchar(250) NOT NULL,
   `email` varchar(100) NOT NULL,
   `ph_no` varchar(12) NOT NULL,
@@ -81,7 +81,7 @@ CREATE TABLE `tbl_courier_officers` (
 --
 
 INSERT INTO `tbl_courier_officers` (`cid`, `officer_name`, `off_pwd`, `address`, `email`, `ph_no`, `office`, `reg_date`) VALUES
-(1, 'admin', 'admin', 'DHL EXPRESS LOGISTICS', 'support@dhlexpresslogistics.online', '000000000000', 'DHL EXPRESS LOGISTICS', '2011-01-30 09:25:21');
+(1, 'admin', '$2y$10$fKKJPw3myAqAWZgXxeDrV.vJCbmh20J7wEedMId4Sbu2CmNby0o1C', 'DHL EXPRESS LOGISTICS', 'support@dhlexpresslogistics.online', '000000000000', 'DHL EXPRESS LOGISTICS', '2011-01-30 09:25:21');
 
 -- --------------------------------------------------------
 

@@ -23,6 +23,10 @@ if [ -n "$MYSQLHOST" ]; then
     echo "Importing schema..."
     mysql --skip-ssl -h"$MYSQLHOST" -P"${MYSQLPORT:-3306}" -u"$MYSQLUSER" -p"$MYSQLPASSWORD" "$MYSQLDATABASE" < /docker/schema.sql && echo "Schema imported."
   fi
+  # Widen off_pwd so it can store a password hash (bcrypt is 60 chars).
+  mysql --skip-ssl -h"$MYSQLHOST" -P"${MYSQLPORT:-3306}" -u"$MYSQLUSER" -p"$MYSQLPASSWORD" "$MYSQLDATABASE" \
+    -e "ALTER TABLE tbl_courier_officers MODIFY off_pwd varchar(255) NOT NULL" 2>/dev/null \
+    && echo "off_pwd column verified."
 fi
 
 exec docker-php-entrypoint "$@"

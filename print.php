@@ -1,7 +1,9 @@
 <?php
 
+session_start();
 require_once('database.php');
 require_once('library.php');
+isUser();
 
 $cid= (int)$_GET['cid'];
 
