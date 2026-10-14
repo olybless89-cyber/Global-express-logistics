@@ -1,0 +1,415 @@
+
+	
+	<!DOCTYPE html>
+<html>
+
+<head>
+<meta charset="utf-8">
+<title>Global Express Logistics | Contact</title>
+<!-- Stylesheets -->
+<link href="css/bootstrap.css" rel="stylesheet">
+<link href="css/style.css" rel="stylesheet">
+<link href="css/responsive.css" rel="stylesheet">
+<link rel="shortcut icon" href="images/favicon.png" type="image/x-icon">
+<link rel="icon" href="images/favicon.png" type="image/x-icon">
+
+<!-- Responsive -->
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0">
+
+<!--[if lt IE 9]><script src="https://cdnjs.cloudflare.com/ajax/libs/html5shiv/3.7.3/html5shiv.js"></script><![endif]-->
+<!--[if lt IE 9]><script src="js/respond.js"></script><![endif]-->
+</head>
+
+<body class="hidden-bar-wrapper">
+
+<div class="page-wrapper">
+ 	
+    <!-- Preloader -->
+    <div class="preloader"></div>
+ 	
+ 	<!-- Main Header / Header Style Two -->
+    <header class="main-header header-style-two">
+		<div class="auto-container">
+			<div class="header-inner">
+				<!--Header Top-->
+				<div class="header-top">
+					<div class="clearfix">
+						
+						<!--Top Right-->
+						<div class="top-right">
+						
+							<!-- Right List -->
+							<ul class="right-list">
+								<li><span class="icon flaticon-mail"></span>support@globalexpresslogistics.com</li>
+								<li><span class="icon flaticon-phone-contact"></span></li>
+							</ul>
+							
+							<!--Language-->
+							<div class="language dropdown"><a class="btn btn-default dropdown-toggle" id="dropdownMenu2" data-toggle="dropdown" aria-haspopup="true" aria-expanded="true" href="#"><span class="globe flaticon-world"></span>United State.</a>
+								
+							</div>
+							
+							<!--Social Box-->
+							<ul class="social-box">
+								<li>
+						<div id="google_translate_element"></div>
+
+<script type="text/javascript">
+function googleTranslateElementInit() {
+  new google.translate.TranslateElement({pageLanguage: 'en'}, 'google_translate_element');
+}
+</script>
+
+<script type="text/javascript" src="//translate.google.com/translate_a/element.js?cb=googleTranslateElementInit"></script>
+								
+								
+								
+								
+								
+								
+								
+								
+								</li>
+							</ul>
+							
+						</div>
+						
+					</div>
+					
+				</div>
+			
+				<!--Header-Upper-->
+				<div class="header-upper">
+					
+					<div class="clearfix">
+						
+						<div class="pull-left logo-box">
+							<div class="logo"><a href="index.html"><img src="images/logo.png" alt="" title=""></a></div>
+						</div>
+						
+						<div class="pull-right upper-right">
+							
+							<!--Header Lower-->
+							<div class="header-lower">
+								
+								
+									<div class="nav-outer clearfix">
+										<!-- Main Menu -->
+										<nav class="main-menu navbar-expand-md">
+											<div class="navbar-header">
+												<!-- Toggle Button -->    	
+												<button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+													<span class="icon-bar"></span>
+													<span class="icon-bar"></span>
+													<span class="icon-bar"></span>
+												</button>
+											</div>
+											
+											<div class="navbar-collapse collapse clearfix" id="navbarSupportedContent">
+												<ul class="navigation clearfix">
+												<li><a href="index.html">Home</a></li>
+													<li><a href="about.html">About Us</a></li>
+													<li><a href="services.html">Our Services</a></li>
+													<li><a href="quote.php">Get Quote</a></li>
+													<li><a href="track.html">Track your shippment</a></li>
+													
+													<li class="current"><a href="contact.php">Contact Us</a></li>
+												</ul>
+											</div>
+										</nav>
+										
+										<!-- Main Menu End-->
+										<div class="outer-box clearfix">
+										
+											<!--Option Box-->
+											<div class="option-box">
+												
+												<!--Search Box-->
+												<div class="search-box-outer">
+													<div class="dropdown">
+														<button class="search-box-btn dropdown-toggle" type="button" id="dropdownMenu3" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"><span class="flaticon-route"></span></button>
+														<ul class="dropdown-menu pull-right search-panel" aria-labelledby="dropdownMenu3">
+															<li class="panel-outer">
+																<div class="form-container">
+																	<form method="post" action="track-result.php" method="post" name="form1" id="userForm" onSubmit="return validate()">
+																		<div class="form-group">
+																			<input type="search" name="Consignment" id="Consignment" value="" placeholder="Track Your Shipment" required="">
+																			<button type="submit" class="search-btn"><span class="fa fa-search"></span></button>
+																		</div>
+																	</form>
+																</div>
+															</li>
+														</ul>
+													</div>
+												</div>
+												
+											</div>
+										</div>
+									</div>
+								
+							</div>
+							<!--End Header Lower-->
+							
+						</div>
+						
+					</div>
+					
+				</div>
+			<!--End Header Upper-->
+			</div>
+        </div>
+		
+		<!--Sticky Header-->
+        <div class="sticky-header">
+        	<div class="auto-container clearfix">
+            	<!--Logo-->
+            	<div class="logo pull-left">
+                	<a href="index.html" class="img-responsive"><img src="images/logo-small-2.png" alt="" title=""></a>
+                </div>
+                
+                <!--Right Col-->
+                <div class="right-col pull-right">
+                	<!-- Main Menu -->
+                    <nav class="main-menu navbar-expand-md">
+                        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent1" aria-controls="navbarSupportedContent1" aria-expanded="false" aria-label="Toggle navigation">
+                            <span class="icon-bar"></span>
+                            <span class="icon-bar"></span>
+                            <span class="icon-bar"></span>
+                        </button>
+                        
+                        <div class="navbar-collapse collapse clearfix" id="navbarSupportedContent1">
+                            <ul class="navigation clearfix">
+													<li><a href="index.html">Home</a></li>
+													<li><a href="about.html">About Us</a></li>
+													<li><a href="services.html">Our Services</a></li>
+													<li><a href="quote.php">Get Quote</a></li>
+													<li><a href="track.html">Track your shippment</a></li>
+													
+													<li class="current"><a href="contact.php">Contact Us</a></li>
+												</ul>
+                        </div>
+                    </nav><!-- Main Menu End-->
+                </div>
+            </div>
+        </div>
+        <!--End Sticky Header-->
+    
+    </header>
+    <!--End Main Header -->
+	
+	<!--Page Title-->
+    <section class="page-title" style="background-image:url(images/background/12.jpg)">
+    	<div class="auto-container">
+        	<h2>Contact Us</h2>
+			<div class="separater"></div>
+        </div>
+    </section>
+	
+	 <!--Breadcrumb-->
+    <div class="breadcrumb-outer">
+    	<div class="auto-container">
+        	<ul class="bread-crumb text-center">
+            	<li><a href="index.html">Home</a> <span>/</span></li>
+                <li>Contact Us</li>
+            </ul>
+        </div>
+    </div>
+    <!--End Page Title-->
+	
+	<!-- Contact Section -->
+	<section class="quote-section">
+		<div class="auto-container">
+			<div class="quote-form-box contact-page">
+				<div class="sec-title centered">
+					<h3>Get in touch<span> with us</span></h3>
+					<div class="separater"></div>
+					<div class="text">We value your comments and suggestions</div>
+				</div>
+				<!-- Form-->
+                <form class="contact-form" action="contactform.php" method="post">
+					<div class="row clearfix">
+						<div class="form-group col-lg-4 col-md-6 col-sm-12">
+							<input type="text" name="name" id="name" placeholder="Enter your Name" required="">
+						</div>
+						
+						<div class="form-group col-lg-4 col-md-6 col-sm-12">
+							<input type="email" name="mail" id="mail" placeholder="Email Address" required="">
+						</div>
+						
+						<div class="form-group col-lg-4 col-md-6 col-sm-12">
+							<input type="text" name="phone" id="phone" placeholder="Telephone" required="">
+						</div>
+						<div class="form-group col-lg-12 col-md-12 col-sm-12 col-lg-12">
+							<textarea placeholder="message" id="comments" name="message"></textarea>
+						</div>
+						<div class="form-group col-lg-6 col-md-6 col-sm-12">
+							<button type="submit" class="theme-btn btn-style-one">Send Message</button>
+						</div>
+					</div>
+				</form>
+			</div>
+		</div>
+	</section>
+	<!-- End contact Section -->
+</div>
+	
+	
+	
+	
+	
+	
+	
+	
+	<!--Main Footer-->
+    <footer class="main-footer style-two" style="background-image:url(images/background/7.png)">
+    	<div class="auto-container">
+        	<!--Widgets Section-->
+            <div class="widgets-section">
+            	<div class="row clearfix">
+                	
+                    <!--Column-->
+                    <div class="big-column col-lg-6 col-md-12 col-sm-12">
+						<div class="row clearfix">
+						
+                        	<!--Footer Column-->
+                            <div class="footer-column col-lg-6 col-md-6 col-sm-12">
+                                <div class="footer-widget logo-widget">
+									<h2><span class="icon fa fa-thumbs-o-up"></span>CP. Trademark</h2>
+									
+									<div class="row clearfix">
+										<img src="images/logo.png" alt="" title="">
+									</div>
+									
+								</div>
+							</div>
+							
+							<!--Footer Column-->
+                            <div class="footer-column col-lg-6 col-md-6 col-sm-12">
+                                <div class="footer-widget news-widget">
+									<h2><span class="icon fa fa-bullhorn"></span>Recent News</h2>
+									
+									<!--News Widget Block-->
+                                    <div class="news-widget-block">
+                                        <div class="widget-inner">
+                                            <div class="image">
+                                                <img src="images/resource/news-image-1.jpg" alt="">
+                                            </div>
+                                            <h3><a href="##">Track Your Shipment Online with Global Express Logistics</a></h3>
+                                            <div class="post-date">November 26, 2020</div>
+                                        </div>
+                                    </div>
+                                    
+									
+                                   
+								</div>
+							</div>
+							
+						</div>
+					</div>
+					
+					<!--Column-->
+                    <div class="big-column col-lg-6 col-md-12 col-sm-12">
+						<div class="row clearfix">
+						
+                        	<!--Footer Column-->
+                            <div class="footer-column col-lg-6 col-md-6 col-sm-12">
+                                <div class="footer-widget mail-widget">
+									<h2><span class="icon fa fa-envelope-o"></span>Mailing List</h2>
+									<div class="text">Sign up for our mailing list.</div>
+									<!-- Email Form -->
+									<div class="email-form">
+										<form method="post" action="##">
+											<div class="form-group clearfix">
+												<input type="email" name="email" value="" placeholder="Email address">
+												<button type="submit" class="theme-btn submit-btn"><span class="icon fa fa-check"></span></button>
+											</div>
+										</form>
+									</div>
+									
+								</div>
+							</div>
+							
+							<!--Footer Column-->
+                            <div class="footer-column col-lg-6 col-md-6 col-sm-12">
+                                <div class="footer-widget about-widget">
+									<h2><span class="icon fa fa-user"></span>Contact Us</h2>
+									<div class="phone-number"></div>
+									<div class="about-email"><br>
+									support@globalexpresslogistics.com</div>
+									
+								</div>
+							</div>
+							
+						</div>
+					</div>
+					
+				</div>
+			</div>
+		</div>
+		
+			<!-- Footer Bottom -->
+		<div class="footer-bottom">
+			<div class="copyright">&copy; 2022 Global Express Logistics. ALL RIGHTS RESERVED</div>
+		</div>
+		
+	</footer>
+	
+</div>
+<!--End pagewrapper-->
+
+<!--Scroll to top-->
+<div class="scroll-to-top scroll-to-target" data-target="html"><span class="fa fa-arrow-up"></span></div>
+
+<script src="js/jquery.js"></script>
+<script src="js/popper.min.js"></script>
+<script src="js/bootstrap.min.js"></script>
+<script src="js/jquery.mCustomScrollbar.concat.min.js"></script>
+<script src="js/jquery.fancybox.js"></script>
+<script src="js/appear.js"></script>
+<script src="js/owl.js"></script>
+<script src="js/wow.js"></script>
+<script src="js/jquery-ui.js"></script>
+<script src="js/script.js"></script>
+
+<script src="process/jquery.min.js"></script>
+	<script src="process/jquery.validate.js"></script>
+	
+<script>
+	$.validator.setDefaults({
+		submit: function() {
+			alert("submitted!");
+		}
+	});
+
+	$(document).ready(function() {
+		$("#userForm").validate({
+			rules: {
+				name: "required",
+				Consignment: {
+					required: true,
+					minlength: 13
+				},
+			   
+			},
+			messages: {
+				name: "Please enter your name",           
+				Consignment: {
+						required: "Please enter a valid tracking number...",
+						minlength: "Tracking ID must consist of at least 13 characters"
+				},           
+			}
+		});
+	});
+	
+	</script>
+	<script>
+	$(document).ready(function(){
+		$(".nav-tabs a").click(function(){
+			$(this).tab('show');
+		});
+	});
+	</script>
+<!--Start of Tawk.to Script--><script type="text/javascript">var Tawk_API=Tawk_API||{}, Tawk_LoadStart=new Date();(function(){var s1=document.createElement("script"),s0=document.getElementsByTagName("script")[0];s1.async=true;s1.src='https://embed.tawk.to/609c2732185beb22b30cb025/1f5gvi8rf';s1.charset='UTF-8';s1.setAttribute('crossorigin','*');s0.parentNode.insertBefore(s1,s0);})();</script><!--End of Tawk.to Script--></body>
+
+</html>
