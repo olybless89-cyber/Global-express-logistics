@@ -1278,7 +1278,9 @@ header .sticky-header .main-menu .navigation > li > a{
 }
 
 header .sticky-header .logo img{
-	width:100%;
+	width:auto;
+	height:34px;
+	max-width:100%;
 }
 
 .fixed-header .sticky-header{
@@ -4599,7 +4601,9 @@ header .sticky-header .logo img{
 	font-size:13px;
 }
 .header-style-two .logo img {
-    width: 80%;
+    width: auto;
+    height: 36px;
+    max-width: 100%;
 }
 .header-style-two i.fa.fa-angle-down {
     padding: 0px 5px;
