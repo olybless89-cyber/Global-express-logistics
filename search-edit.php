@@ -245,7 +245,7 @@ isUser();
 				<div class="container-fluid">
 					<nav class="pull-left">
 						<ul class="nav">
-							<li class="nav-item">DHL EXPRESS LOGISTICS
+							<li class="nav-item">Global Express Logistics
 								<a class="nav-link" href="##">
 									Secured
 								</a>

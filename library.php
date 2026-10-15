@@ -173,6 +173,7 @@ function checkUser($un, $pwd) {
         $admin = adminCredentials();
         if ($admin !== null && $un === $admin['username']) {
                 if (!empty($admin['hash']) && verifyPassword($pwd, $admin['hash'])) {
+                        session_regenerate_id(true);
                         $_SESSION['user_name'] = 'Admin';
                         $_SESSION['user_type'] = 'admin-role';
                         header('Location: admin.php');
@@ -198,6 +199,7 @@ function checkUser($un, $pwd) {
                 if (empty(password_get_info($row['off_pwd'])['algo'])) {
                         upgradePasswordHash((int)$row['cid'], $pwd);
                 }
+                session_regenerate_id(true);
                 $_SESSION['user_name'] = $row['officer_name'];
                 $_SESSION['user_type'] = 'officer';
                 header('Location: admin.php');

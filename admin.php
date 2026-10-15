@@ -16,7 +16,7 @@ $result = dbQuery($sql);
 <html lang="en">
 <head>
 	<meta http-equiv="X-UA-Compatible" content="IE=edge" />
-	<title>DHL EXPRESS LOGISTICS.</title>
+	<title>Global Express Logistics.</title>
 	<meta content='width=device-width, initial-scale=1.0, shrink-to-fit=no' name='viewport' />
 	<link rel="icon" href="assets/img/icon.ico" type="image/x-icon"/>
 
@@ -219,7 +219,7 @@ $result = dbQuery($sql);
 								<div class="card-body">
 									<div class="card-title">Why are we the Best</div>
 									<div class="row py-3">
-				DHL EXPRESS LOGISTICS Courier  is the simplest solution for Courier & Cargo Tracking Business. 
+				Global Express Logistics Courier  is the simplest solution for Courier & Cargo Tracking Business. 
 				If you need to enable Tracking Option in your existing or new website, 
 				this is quickest Software Solution. You can get install it yourselves or We do 
 				the installation and brand it in your name on your hosting ! The Courier Software 
@@ -261,7 +261,7 @@ $result = dbQuery($sql);
              <script>
               document.write(new Date().getFullYear())
 
-            </script>,  DHL EXPRESS LOGISTICS. All Rights Reserved <img src="assets/home/secure.gif"> 
+            </script>,  Global Express Logistics. All Rights Reserved <img src="assets/home/secure.gif"> 
 					</div>				
 				</div>
 			</footer>

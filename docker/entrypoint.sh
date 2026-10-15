@@ -10,6 +10,12 @@ PORT="${PORT:-80}"
 sed -ri "s/^Listen .*/Listen ${PORT}/" /etc/apache2/ports.conf
 sed -ri "s/<VirtualHost \*:[0-9]+>/<VirtualHost *:${PORT}>/" /etc/apache2/sites-available/000-default.conf
 
+# Warn loudly in the deploy log when required variables are missing
+[ -z "$MYSQLHOST" ] && echo "WARNING: MYSQLHOST is not set. Link the MySQL service variables (MYSQLHOST, MYSQLPORT, MYSQLUSER, MYSQLPASSWORD, MYSQLDATABASE) to this service. Admin login and tracking will not work."
+if [ -z "$ADMIN_USERNAME" ] || [ -z "$ADMIN_PASSWORD_HASH" ]; then
+  echo "WARNING: ADMIN_USERNAME / ADMIN_PASSWORD_HASH not set. Admin login is disabled until both are set."
+fi
+
 # Import schema on first boot if the database is empty
 if [ -n "$MYSQLHOST" ]; then
   i=0
