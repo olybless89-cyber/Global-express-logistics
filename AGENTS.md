@@ -2,7 +2,7 @@
 
 ## Project
 
-Global Express Logistics courier-tracking site. Classic PHP + MySQL app served by
+DHL EXPRESS LOGISTICS courier-tracking site. Classic PHP + MySQL app served by
 Apache (`php:8.2-apache`), containerised and deployed on Railway from `main`.
 
 ## Layout
@@ -65,5 +65,5 @@ MySQL, imports the schema if the table is missing, and widens `off_pwd` to
 - `process.php` insert/update statements still build SQL with string
   interpolation of `$_POST`. They are behind `isUser()` now, but should be
   parameterised next.
-- Login now calls `session_regenerate_id()`; the admin forms still need a
-  CSRF token.
+- Sessions use PHP defaults; consider `session_regenerate_id()` on login and a
+  CSRF token on the admin forms.
