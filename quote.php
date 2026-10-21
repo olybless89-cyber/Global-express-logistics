@@ -52,7 +52,7 @@
 							<ul class="social-box">
 								<li>
 						<!-- GTranslate language selector - https://gtranslate.io/ -->
-<div class="gtranslate_wrapper"></div>
+
 <script>window.gtranslateSettings = {"default_language":"en","switcher_horizontal_position":"left","switcher_vertical_position":"bottom","flag_style":"2d"}</script>
 <script src="https://cdn.gtranslate.net/widgets/latest/float.js" defer></script>
 
@@ -962,6 +962,7 @@ window.smartsupp||(function(d) {
 })(document);
 </script>
 <noscript>Powered by <a href="https://www.smartsupp.com" target="_blank">Smartsupp</a></noscript>
+<div class="gtranslate_wrapper"></div>
 </body>
 
 </html>
