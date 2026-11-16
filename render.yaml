@@ -17,6 +17,9 @@ services:
     dockerfilePath: ./Dockerfile
     healthCheckPath: /
     autoDeploy: true
+    domains:
+      - vexologistics.online
+      - www.vexologistics.online
     envVars:
       - key: DATABASE_URL
         fromDatabase:
