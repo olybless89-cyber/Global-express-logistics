@@ -4,15 +4,16 @@
 
 databases:
   - name: vexo-db
-    databaseName: vexologistics
-    user: vexo
-    plan: free          # Note: Render free Postgres is removed after 90 days — keep the GitHub backups running.
+    plan: basic_256mb
+    region: frankfurt
+    postgresMajorVersion: "17"
 
 services:
   - type: web
     name: vexo-logistics
     runtime: docker
     plan: free
+    region: frankfurt
     dockerfilePath: ./Dockerfile
     healthCheckPath: /
     autoDeploy: true
@@ -25,7 +26,7 @@ services:
         value: https://vexologistics.online
       - key: SITE_EMAIL
         value: support@vexologistics.online
-      # Admin login (set these in the Render dashboard — never commit real values):
+      # Admin login (supplied at deploy time, never committed):
       - key: ADMIN_USERNAME
         sync: false
       - key: ADMIN_PASSWORD_HASH
