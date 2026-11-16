@@ -9,7 +9,7 @@ $sql = "SELECT cid, cons_no, s_add, s_name, s_phone, s_mail, r_phone, r_add, r_m
 		FROM tbl_courier
 		WHERE status = 'Delivered'
 		ORDER BY cid DESC 
-		LIMIT 0, 20";
+		LIMIT 20 OFFSET 0";
 $result = dbQuery($sql);		
 
 ?>
@@ -393,7 +393,7 @@ function confirmDel(field,msg)
 						 Copyright &copy;
              <script>
               document.write(new Date().getFullYear())
-            </script>, DHL EXPRESS LOGISTICS. All Rights Reserved <img src="assets/home/secure.gif"> 
+            </script>, VEXO LOGISTICS. All Rights Reserved <img src="assets/home/secure.gif"> 
 					</div>				
 				</div>
 			</footer

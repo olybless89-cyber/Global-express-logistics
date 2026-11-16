@@ -222,7 +222,7 @@ isUser();
 				<div class="container-fluid">
 					<nav class="pull-left">
 						<ul class="nav">
-							<li class="nav-item">DHL EXPRESS LOGISTICS
+							<li class="nav-item">VEXO LOGISTICS
 								<a class="nav-link" href="##">
 									Secured
 								</a>

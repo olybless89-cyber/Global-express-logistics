@@ -3,7 +3,7 @@
 
 <head>
 <meta charset="utf-8">
-<title>DHL EXPRESS LOGISTICS | Quote</title>
+<title>VEXO LOGISTICS | Quote</title>
 <!-- Stylesheets -->
 <link href="css/bootstrap.css" rel="stylesheet">
 <link href="css/style.css" rel="stylesheet">
@@ -39,7 +39,7 @@
 						
 							<!-- Right List -->
 							<ul class="right-list">
-								<li><span class="icon flaticon-mail"></span>support@dhlexpresslogistics.online</li>
+								<li><span class="icon flaticon-mail"></span>support@vexologistics.online</li>
 								<li><span class="icon flaticon-phone-contact"></span></li>
 							</ul>
 							
@@ -836,7 +836,7 @@
                                             <div class="image">
                                                 <img src="images/resource/news-image-1.jpg" alt="">
                                             </div>
-                                            <h3><a href="##">Track Your Shipment Online with DHL EXPRESS LOGISTICS</a></h3>
+                                            <h3><a href="##">Track Your Shipment Online with VEXO LOGISTICS</a></h3>
                                             <div class="post-date">November 26, 2020</div>
                                         </div>
                                     </div>
@@ -876,7 +876,7 @@
                                 <div class="footer-widget about-widget">
 									<h2><span class="icon fa fa-user"></span>Contact Us</h2>
 									<div class="phone-number"></div>
-									<div class="about-email">support@dhlexpresslogistics.online<br>
+									<div class="about-email">support@vexologistics.online<br>
 									</div>
 									
 								</div>
@@ -890,7 +890,7 @@
 		</div>
 		<!-- Footer Bottom -->
 		<div class="footer-bottom">
-			<div class="copyright">&copy; 2022 DHL EXPRESS LOGISTICS. ALL RIGHTS RESERVED</div>
+			<div class="copyright">&copy; 2022 VEXO LOGISTICS. ALL RIGHTS RESERVED</div>
 		</div>
 		
 	</footer>

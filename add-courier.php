@@ -583,7 +583,7 @@ isUser();
 						 Copyright &copy;
              <script>
               document.write(new Date().getFullYear())
-              </script>, DHL EXPRESS LOGISTICS.  All Rights Reserved <img src="assets/home/secure.gif"> 
+              </script>, VEXO LOGISTICS.  All Rights Reserved <img src="assets/home/secure.gif"> 
 					</div>				
 				</div>
 			</footer>

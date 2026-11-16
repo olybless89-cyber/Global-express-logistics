@@ -8,7 +8,7 @@ $sql = "SELECT cid, cons_no, s_name, r_name, pick_date, pick_date, status
 		FROM tbl_courier
 		WHERE status != 'Delivered'
 		ORDER BY cid DESC 
-		LIMIT 0, 20";
+		LIMIT 20 OFFSET 0";
 $result = dbQuery($sql);	
 ?>
 <!DOCTYPE html>
@@ -16,7 +16,7 @@ $result = dbQuery($sql);
 <html lang="en">
 <head>
 	<meta http-equiv="X-UA-Compatible" content="IE=edge" />
-	<title>DHL EXPRESS LOGISTICS.</title>
+	<title>VEXO LOGISTICS.</title>
 	<meta content='width=device-width, initial-scale=1.0, shrink-to-fit=no' name='viewport' />
 	<link rel="icon" href="assets/img/icon.ico" type="image/x-icon"/>
 
@@ -196,7 +196,7 @@ $result = dbQuery($sql);
 								<div class="card-body">
 									<div class="card-title">Why are we the Best</div>
 									<div class="row py-3">
-				DHL EXPRESS LOGISTICS Courier  is the simplest solution for Courier & Cargo Tracking Business. 
+				VEXO LOGISTICS Courier  is the simplest solution for Courier & Cargo Tracking Business. 
 				If you need to enable Tracking Option in your existing or new website, 
 				this is quickest Software Solution. You can get install it yourselves or We do 
 				the installation and brand it in your name on your hosting ! The Courier Software 
@@ -238,7 +238,7 @@ $result = dbQuery($sql);
              <script>
               document.write(new Date().getFullYear())
 
-            </script>,  DHL EXPRESS LOGISTICS. All Rights Reserved <img src="assets/home/secure.gif"> 
+            </script>,  VEXO LOGISTICS. All Rights Reserved <img src="assets/home/secure.gif"> 
 					</div>				
 				</div>
 			</footer>

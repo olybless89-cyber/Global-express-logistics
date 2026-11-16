@@ -1,0 +1,67 @@
+name: Database Backup to GitHub
+
+# Dumps the VEXO Logistics PostgreSQL database and commits the snapshot to this
+# repo, so the data survives even if the hosting account is suspended or deleted.
+#
+# SETUP (one time):
+#   1. In Render, open the database -> copy the "External Database URL".
+#   2. In GitHub: repo -> Settings -> Secrets and variables -> Actions ->
+#      New repository secret. Name: DATABASE_URL  Value: <the External URL>
+#      (make sure it ends with ?sslmode=require)
+#
+# Runs every 6 hours, and on demand from the Actions tab (Run workflow).
+
+on:
+  schedule:
+    - cron: '0 */6 * * *'
+  workflow_dispatch: {}
+
+permissions:
+  contents: write
+
+concurrency:
+  group: db-backup
+  cancel-in-progress: false
+
+jobs:
+  backup:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
+
+      - name: Dump database
+        env:
+          DATABASE_URL: ${{ secrets.DATABASE_URL }}
+        run: |
+          if [ -z "$DATABASE_URL" ]; then
+            echo "DATABASE_URL secret is not set. Add it in repo Settings -> Secrets -> Actions."
+            exit 1
+          fi
+          mkdir -p backups/history
+          STAMP=$(date -u +'%Y%m%d-%H%M')
+          # Use a pinned, recent pg client via Docker so it works regardless of
+          # the server's PostgreSQL version.
+          docker run --rm -e PGCONNECT_TIMEOUT=20 postgres:17-alpine \
+            pg_dump "$DATABASE_URL" --no-owner --no-privileges --clean --if-exists \
+            > "backups/latest.sql"
+          cp "backups/latest.sql" "backups/history/vexologistics-${STAMP}.sql"
+          echo "Dumped $(wc -l < backups/latest.sql) lines at ${STAMP} UTC"
+
+      - name: Prune history (keep newest 60 snapshots)
+        run: |
+          cd backups/history
+          ls -1t vexologistics-*.sql 2>/dev/null | tail -n +61 | xargs -r rm -f
+          echo "Snapshots kept: $(ls -1 vexologistics-*.sql 2>/dev/null | wc -l)"
+
+      - name: Commit and push snapshot
+        run: |
+          git config user.name  "vexo-backup-bot"
+          git config user.email "actions@github.com"
+          git add backups/
+          if git diff --cached --quiet; then
+            echo "No database changes since last backup."
+          else
+            git commit -m "DB backup $(date -u +'%Y-%m-%d %H:%M UTC')"
+            git push
+          fi

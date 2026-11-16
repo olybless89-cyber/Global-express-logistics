@@ -9,7 +9,7 @@ $sql = "SELECT *
 		FROM tbl_courier_officers
 		WHERE cid = cid
 		ORDER BY cid DESC 
-		LIMIT 0, 20";
+		LIMIT 20 OFFSET 0";
 $result = dbQuery($sql);		
 
 ?>

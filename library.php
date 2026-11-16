@@ -183,15 +183,13 @@ function checkUser($un, $pwd) {
         // Look up the account, then compare the password in PHP. The query is
         // parameterised so user input can never change its structure.
         global $dbConn;
-        $stmt = mysqli_prepare($dbConn, "SELECT cid, officer_name, off_pwd FROM tbl_courier_officers WHERE officer_name = ?");
-        if (!$stmt) {
+        try {
+                $stmt = $dbConn->prepare("SELECT cid, officer_name, off_pwd FROM tbl_courier_officers WHERE officer_name = ?");
+                $stmt->execute(array($un));
+                $row = $stmt->fetch(PDO::FETCH_ASSOC);
+        } catch (PDOException $e) {
                 return "...invalid details. Please try Again.";
         }
-        mysqli_stmt_bind_param($stmt, 's', $un);
-        mysqli_stmt_execute($stmt);
-        $result = mysqli_stmt_get_result($stmt);
-        $row = $result ? mysqli_fetch_assoc($result) : null;
-        mysqli_stmt_close($stmt);
 
         if ($row && verifyPassword($pwd, $row['off_pwd'])) {
                 // Upgrade legacy plaintext passwords to a hash on first login.
@@ -209,12 +207,12 @@ function checkUser($un, $pwd) {
 function upgradePasswordHash($cid, $plain)
 {
         global $dbConn;
-        $stmt = mysqli_prepare($dbConn, "UPDATE tbl_courier_officers SET off_pwd = ? WHERE cid = ?");
-        if ($stmt) {
+        try {
                 $hash = hashPassword($plain);
-                mysqli_stmt_bind_param($stmt, 'si', $hash, $cid);
-                mysqli_stmt_execute($stmt);
-                mysqli_stmt_close($stmt);
+                $stmt = $dbConn->prepare("UPDATE tbl_courier_officers SET off_pwd = ? WHERE cid = ?");
+                $stmt->execute(array($hash, (int)$cid));
+        } catch (PDOException $e) {
+                // non-fatal: password upgrade is best-effort
         }
 }
 

@@ -199,7 +199,7 @@ if($no == 1){
               FROM tbl_courier_track
               WHERE cons_no = '$cons'
               ORDER BY id DESC
-              LIMIT 0, 1";		
+              LIMIT 1 OFFSET 0";		
 
 
 					//$sql = "SELECT tbl_courier.*, tbl_courier_track.*
@@ -263,7 +263,7 @@ if($no == 1){
               FROM tbl_courier_track
               WHERE cons_no = '$cons'
               ORDER BY id DESC
-              LIMIT 0, 15";		
+              LIMIT 15 OFFSET 0";		
 
 
 					//$sql = "SELECT tbl_courier.*, tbl_courier_track.*

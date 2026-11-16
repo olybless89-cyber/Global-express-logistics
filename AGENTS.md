@@ -2,8 +2,8 @@
 
 ## Project
 
-DHL EXPRESS LOGISTICS courier-tracking site. Classic PHP + MySQL app served by
-Apache (`php:8.2-apache`), containerised and deployed on Railway from `main`.
+VEXO LOGISTICS courier-tracking site. Classic PHP + PostgreSQL app served by
+Apache (`php:8.2-apache`), containerised and deployed on Render from `main`.
 
 ## Layout
 
@@ -55,10 +55,10 @@ docker run --rm -v "$PWD":/app -w /app php:8.2-cli sh -c 'for f in *.php; do php
 
 ## Deploy
 
-Railway builds `Dockerfile` from `main`. Set the two `ADMIN_*` variables in the
-Railway service before relying on admin login. On boot the entrypoint waits for
-MySQL, imports the schema if the table is missing, and widens `off_pwd` to
-`varchar(255)` so pre-existing databases can store hashes.
+Render builds `Dockerfile` from `main`. Set the two `ADMIN_*` variables in the
+Render service before relying on admin login. On boot the entrypoint waits for
+PostgreSQL, imports the schema if the table is missing, and replaces the seeded
+`admin` hash with a random one so the default account can never be used.
 
 ## Known remaining debt (not yet addressed)
 

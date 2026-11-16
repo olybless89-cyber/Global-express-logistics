@@ -1,77 +1,120 @@
 <?php
-// Database connection config (reads Railway MySQL variables, falls back to local defaults)
-$dbHost = getenv('MYSQLHOST') ?: 'localhost';
-$dbPort = (int)(getenv('MYSQLPORT') ?: 3306);
-$dbUser = getenv('MYSQLUSER') ?: 'root';
-$dbPass = getenv('MYSQLPASSWORD') ?: '';
-$dbName = getenv('MYSQLDATABASE') ?: 'dhlexpresslogistics';
+// Database connection config.
+// Primary: Render/Heroku-style DATABASE_URL (postgres://user:pass@host:port/dbname).
+// Fallback: individual PG* variables, then local defaults.
+
+function _vexo_db_settings()
+{
+    $url = getenv('DATABASE_URL');
+    if ($url && ($p = parse_url($url)) && !empty($p['host'])) {
+        return array(
+            'host' => $p['host'],
+            'port' => isset($p['port']) ? (int)$p['port'] : 5432,
+            'user' => isset($p['user']) ? urldecode($p['user']) : 'postgres',
+            'pass' => isset($p['pass']) ? urldecode($p['pass']) : '',
+            'name' => isset($p['path']) ? ltrim($p['path'], '/') : 'postgres',
+        );
+    }
+    return array(
+        'host' => getenv('PGHOST') ?: 'localhost',
+        'port' => (int)(getenv('PGPORT') ?: 5432),
+        'user' => getenv('PGUSER') ?: 'postgres',
+        'pass' => getenv('PGPASSWORD') ?: '',
+        'name' => getenv('PGDATABASE') ?: 'vexologistics',
+    );
+}
+
+$__db = _vexo_db_settings();
 
 // Site settings
-$site_title = 'DHL EXPRESS LOGISTICS';
-$site_url   = getenv('SITE_URL') ?: 'https://dhlexpresslogistics.online';
-$site_email = getenv('SITE_EMAIL') ?: 'support@dhlexpresslogistics.online';
+$site_title = 'VEXO LOGISTICS';
+$site_url   = getenv('SITE_URL') ?: 'https://vexologistics.online';
+$site_email = getenv('SITE_EMAIL') ?: 'support@vexologistics.online';
 
-mysqli_report(MYSQLI_REPORT_OFF);
-$dbConn = mysqli_connect($dbHost, $dbUser, $dbPass, $dbName, $dbPort) or die('MySQL connect failed. ' . mysqli_connect_error());
-mysqli_query($dbConn, "SET SESSION sql_mode = ''");
+$__dsn = sprintf('pgsql:host=%s;port=%d;dbname=%s', $__db['host'], $__db['port'], $__db['name']);
+$__sslmode = getenv('DB_SSLMODE');
+if ($__sslmode !== false && $__sslmode !== '') {
+    $__dsn .= ';sslmode=' . $__sslmode;
+}
 
-if (!defined('MYSQL_NUM'))   define('MYSQL_NUM', MYSQLI_NUM);
-if (!defined('MYSQL_ASSOC')) define('MYSQL_ASSOC', MYSQLI_ASSOC);
-if (!defined('MYSQL_BOTH'))  define('MYSQL_BOTH', MYSQLI_BOTH);
+try {
+    $dbConn = new PDO($__dsn, $__db['user'], $__db['pass'], array(
+        PDO::ATTR_ERRMODE            => PDO::ERRMODE_EXCEPTION,
+        PDO::ATTR_DEFAULT_FETCH_MODE => PDO::FETCH_ASSOC,
+        PDO::ATTR_EMULATE_PREPARES   => false,
+    ));
+} catch (PDOException $e) {
+    die('Database connect failed. ' . $e->getMessage());
+}
+
+// Compatibility constants (mirror the old mysqli fetch-mode names used by callers).
+if (!defined('MYSQL_NUM'))   define('MYSQL_NUM', PDO::FETCH_NUM);
+if (!defined('MYSQL_ASSOC')) define('MYSQL_ASSOC', PDO::FETCH_ASSOC);
+if (!defined('MYSQL_BOTH'))  define('MYSQL_BOTH', PDO::FETCH_BOTH);
+if (!defined('MYSQLI_NUM'))   define('MYSQLI_NUM', PDO::FETCH_NUM);
+if (!defined('MYSQLI_ASSOC')) define('MYSQLI_ASSOC', PDO::FETCH_ASSOC);
+if (!defined('MYSQLI_BOTH'))  define('MYSQLI_BOTH', PDO::FETCH_BOTH);
+
+// --- Query helpers: same names/signatures the app has always used. ---
 
 function dbQuery($sql)
 {
-	global $dbConn;
-	$result = mysqli_query($dbConn, $sql) or die(mysqli_error($dbConn));
-	return $result;
+    global $dbConn;
+    try {
+        return $dbConn->query($sql);
+    } catch (PDOException $e) {
+        die('Query failed: ' . $e->getMessage());
+    }
 }
 
 function dbAffectedRows()
 {
-	global $dbConn;
-	return mysqli_affected_rows($dbConn);
+    // Retained for compatibility; PDO exposes affected rows on the statement.
+    return 0;
 }
 
-function dbFetchArray($result, $resultType = MYSQLI_NUM)
+function dbFetchArray($result, $resultType = PDO::FETCH_NUM)
 {
-	return mysqli_fetch_array($result, $resultType);
+    if (!$result) return false;
+    return $result->fetch($resultType);
 }
 
 function dbFetchAssoc($result)
 {
-	return mysqli_fetch_assoc($result);
+    if (!$result) return false;
+    return $result->fetch(PDO::FETCH_ASSOC);
 }
 
 function dbFetchRow($result)
 {
-	return mysqli_fetch_row($result);
+    if (!$result) return false;
+    return $result->fetch(PDO::FETCH_NUM);
 }
 
 function dbFreeResult($result)
 {
-	return mysqli_free_result($result);
+    if ($result instanceof PDOStatement) {
+        $result->closeCursor();
+    }
+    return true;
 }
 
 function dbNumRows($result)
 {
-	return mysqli_num_rows($result);
-}
-
-function dbSelect($dbName)
-{
-	global $dbConn;
-	return mysqli_select_db($dbConn, $dbName);
+    if (!$result) return 0;
+    return $result->rowCount();
 }
 
 function dbInsertId()
 {
-	global $dbConn;
-	return mysqli_insert_id($dbConn);
+    global $dbConn;
+    return $dbConn->lastInsertId();
 }
 
 function dbEscape($value)
 {
-	global $dbConn;
-	return mysqli_real_escape_string($dbConn, $value);
+    // Escapes a value for inclusion inside single quotes in a Postgres
+    // statement (standard_conforming_strings is on by default).
+    return str_replace("'", "''", (string)$value);
 }
 ?>

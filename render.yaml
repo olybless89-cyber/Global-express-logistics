@@ -1,0 +1,32 @@
+# Render Blueprint for VEXO LOGISTICS (PHP + PostgreSQL)
+# Deploy: Render Dashboard -> New -> Blueprint -> connect this repo.
+# Docs: https://render.com/docs/blueprint-spec
+
+databases:
+  - name: vexo-db
+    databaseName: vexologistics
+    user: vexo
+    plan: free          # Note: Render free Postgres is removed after 90 days — keep the GitHub backups running.
+
+services:
+  - type: web
+    name: vexo-logistics
+    runtime: docker
+    plan: free
+    dockerfilePath: ./Dockerfile
+    healthCheckPath: /
+    autoDeploy: true
+    envVars:
+      - key: DATABASE_URL
+        fromDatabase:
+          name: vexo-db
+          property: connectionString
+      - key: SITE_URL
+        value: https://vexologistics.online
+      - key: SITE_EMAIL
+        value: support@vexologistics.online
+      # Admin login (set these in the Render dashboard — never commit real values):
+      - key: ADMIN_USERNAME
+        sync: false
+      - key: ADMIN_PASSWORD_HASH
+        sync: false
